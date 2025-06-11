@@ -2,89 +2,88 @@
 import Navigation from '../components/Navigation';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Users, BookOpen, Award, Computer, Wrench, Zap, Building, Beaker } from 'lucide-react';
+import { Users, BookOpen, Award, Download, Mail, Phone } from 'lucide-react';
 
 const Departments = () => {
   const departments = [
     {
-      name: 'Computer Science & Engineering',
-      icon: Computer,
-      description: 'Leading the digital revolution with cutting-edge technology and innovation.',
-      faculty: 15,
-      students: 300,
-      labs: 8,
-      features: [
-        'Advanced Programming Labs',
-        'AI & Machine Learning Research',
-        'Software Development Projects',
-        'Industry Collaboration Programs'
-      ],
-      hod: 'Dr. Rajesh Sharma',
-      image: 'https://images.unsplash.com/photo-1461749280684-dccba630e2f6'
+      name: "Computer Science Engineering",
+      description: "Leading department in software development, AI, and data science",
+      hod: "Dr. Rajesh Kumar",
+      students: "400+",
+      faculty: "25",
+      labs: "8",
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176"
     },
     {
-      name: 'Mechanical Engineering',
-      icon: Wrench,
-      description: 'Engineering excellence in design, manufacturing, and mechanical systems.',
-      faculty: 12,
-      students: 250,
-      labs: 6,
-      features: [
-        'CAD/CAM Laboratory',
-        'Robotics & Automation',
-        'Thermal Engineering Lab',
-        'Manufacturing Technology'
-      ],
-      hod: 'Prof. Amit Kumar',
-      image: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158'
+      name: "Mechanical Engineering", 
+      description: "Excellence in design, manufacturing, and automotive engineering",
+      hod: "Dr. Priya Sharma",
+      students: "350+",
+      faculty: "20",
+      labs: "6",
+      image: "https://images.unsplash.com/photo-1581092921461-eab62e97a780"
     },
     {
-      name: 'Electronics & Communication',
-      icon: Zap,
-      description: 'Pioneering communication technologies and electronic innovations.',
-      faculty: 10,
-      students: 200,
-      labs: 7,
-      features: [
-        'Digital Signal Processing',
-        'Embedded Systems Lab',
-        'Communication Networks',
-        'VLSI Design Laboratory'
-      ],
-      hod: 'Dr. Sunita Patel',
-      image: 'https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7'
+      name: "Civil Engineering",
+      description: "Building the future with structural and environmental engineering",
+      hod: "Dr. Amit Patil",
+      students: "300+",
+      faculty: "18",
+      labs: "5",
+      image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5"
     },
     {
-      name: 'Civil Engineering',
-      icon: Building,
-      description: 'Building sustainable infrastructure for tomorrow\'s world.',
-      faculty: 8,
-      students: 180,
-      labs: 5,
-      features: [
-        'Structural Analysis Lab',
-        'Environmental Engineering',
-        'Transportation Planning',
-        'Construction Management'
-      ],
-      hod: 'Prof. Rahul Desai',
-      image: 'https://images.unsplash.com/photo-1605810230434-7631ac76ec81'
+      name: "Electronics Engineering",
+      description: "Innovation in electronics, communication, and embedded systems",
+      hod: "Prof. Sunita Patel",
+      students: "250+",
+      faculty: "15",
+      labs: "7",
+      image: "https://images.unsplash.com/photo-1518709268805-4e9042af2176"
+    }
+  ];
+
+  const facultyMembers = [
+    {
+      name: "Prof. Sunita Patel",
+      designation: "Head of Department - Electronics",
+      qualification: "Ph.D. in Electronics Engineering",
+      experience: "15 years",
+      specialization: "Embedded Systems, IoT",
+      email: "sunita.patel@csmsscollege.edu.in",
+      phone: "+91-240-2334460",
+      image: "https://images.unsplash.com/photo-1494790108755-2616b332c1f9"
     },
     {
-      name: 'Chemical Engineering',
-      icon: Beaker,
-      description: 'Transforming materials and processes for industrial applications.',
-      faculty: 6,
-      students: 120,
-      labs: 4,
-      features: [
-        'Process Control Lab',
-        'Chemical Reaction Engineering',
-        'Mass Transfer Operations',
-        'Industrial Chemistry'
-      ],
-      hod: 'Dr. Priya Sharma',
-      image: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085'
+      name: "Dr. Rajesh Kumar",
+      designation: "Head of Department - Computer Science",
+      qualification: "Ph.D. in Computer Science",
+      experience: "20 years",
+      specialization: "AI, Machine Learning, Data Science",
+      email: "rajesh.kumar@csmsscollege.edu.in",
+      phone: "+91-240-2334461",
+      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e"
+    },
+    {
+      name: "Dr. Priya Sharma",
+      designation: "Head of Department - Mechanical",
+      qualification: "Ph.D. in Mechanical Engineering", 
+      experience: "18 years",
+      specialization: "Thermal Engineering, Manufacturing",
+      email: "priya.sharma@csmsscollege.edu.in",
+      phone: "+91-240-2334462",
+      image: "https://images.unsplash.com/photo-1580489944761-15a19d654956"
+    },
+    {
+      name: "Dr. Amit Patil",
+      designation: "Head of Department - Civil",
+      qualification: "Ph.D. in Civil Engineering",
+      experience: "22 years",
+      specialization: "Structural Engineering, Construction",
+      email: "amit.patil@csmsscollege.edu.in",
+      phone: "+91-240-2334463",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d"
     }
   ];
 
@@ -93,95 +92,132 @@ const Departments = () => {
       <Navigation />
       
       {/* Hero Section */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6">Our Departments</h1>
-          <p className="text-xl max-w-3xl mx-auto">
-            Explore our diverse range of engineering and technology departments, 
-            each committed to excellence in education and research.
-          </p>
+      <section className="relative py-20 bg-primary text-white">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h1 className="text-5xl font-bold mb-4">Our Departments</h1>
+            <p className="text-xl max-w-2xl mx-auto">
+              Explore our diverse engineering departments, each committed to excellence in education and research
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Departments Grid */}
+      {/* Departments Overview */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="space-y-12">
+          <div className="grid lg:grid-cols-2 gap-8">
             {departments.map((dept, index) => (
-              <Card key={index} className="overflow-hidden">
-                <div className={`grid lg:grid-cols-2 gap-0 ${index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''}`}>
-                  {/* Image */}
-                  <div className={`relative h-64 lg:h-auto ${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                    <img
-                      src={dept.image}
-                      alt={dept.name}
-                      className="w-full h-full object-cover"
-                    />
-                    <div className="absolute inset-0 bg-black/20"></div>
-                  </div>
-                  
-                  {/* Content */}
-                  <div className={`p-8 ${index % 2 === 1 ? 'lg:col-start-1 lg:row-start-1' : ''}`}>
-                    <div className="flex items-center mb-4">
-                      <dept.icon className="w-8 h-8 text-primary mr-3" />
-                      <h2 className="text-2xl font-bold">{dept.name}</h2>
-                    </div>
-                    
-                    <p className="text-muted-foreground mb-6">{dept.description}</p>
-                    
-                    {/* Stats */}
-                    <div className="grid grid-cols-3 gap-4 mb-6">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">{dept.faculty}</div>
-                        <div className="text-sm text-muted-foreground">Faculty</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">{dept.students}</div>
-                        <div className="text-sm text-muted-foreground">Students</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold text-primary">{dept.labs}</div>
-                        <div className="text-sm text-muted-foreground">Labs</div>
-                      </div>
-                    </div>
-                    
-                    {/* Features */}
-                    <div className="mb-6">
-                      <h3 className="font-semibold mb-3">Key Features:</h3>
-                      <ul className="space-y-2">
-                        {dept.features.map((feature, featureIndex) => (
-                          <li key={featureIndex} className="flex items-center text-sm">
-                            <div className="w-2 h-2 bg-primary rounded-full mr-3"></div>
-                            {feature}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                    
-                    {/* HOD */}
-                    <div className="mb-6">
-                      <p className="text-sm"><strong>Head of Department:</strong> {dept.hod}</p>
-                    </div>
-                    
-                    <Button>Learn More</Button>
-                  </div>
+              <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow">
+                <div className="aspect-video overflow-hidden">
+                  <img 
+                    src={dept.image} 
+                    alt={dept.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{dept.name}</CardTitle>
+                  <CardDescription>{dept.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div className="text-center">
+                      <Users className="w-6 h-6 mx-auto mb-1 text-primary" />
+                      <div className="text-sm font-medium">{dept.students}</div>
+                      <div className="text-xs text-muted-foreground">Students</div>
+                    </div>
+                    <div className="text-center">
+                      <BookOpen className="w-6 h-6 mx-auto mb-1 text-primary" />
+                      <div className="text-sm font-medium">{dept.faculty}</div>
+                      <div className="text-xs text-muted-foreground">Faculty</div>
+                    </div>
+                  </div>
+                  <div className="space-y-2 mb-4">
+                    <div className="text-sm">
+                      <span className="font-medium">Head of Department:</span> {dept.hod}
+                    </div>
+                    <div className="text-sm">
+                      <span className="font-medium">Laboratories:</span> {dept.labs}
+                    </div>
+                  </div>
+                  <div className="flex gap-2">
+                    <Button className="flex-1">Learn More</Button>
+                    <Button variant="outline">
+                      <Download className="w-4 h-4 mr-2" />
+                      Brochure
+                    </Button>
+                  </div>
+                </CardContent>
               </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Call to Action */}
+      {/* Faculty Directory */}
       <section className="py-16 bg-secondary/20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Join Us?</h2>
-          <p className="text-xl text-muted-foreground mb-8">
-            Discover your passion and build your future with our world-class departments.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg">Apply for Admission</Button>
-            <Button size="lg" variant="outline">Download Brochure</Button>
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Faculty Directory</h2>
+            <p className="text-xl text-muted-foreground">Meet our experienced and dedicated faculty members</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {facultyMembers.map((faculty, index) => (
+              <Card key={index} className="text-center">
+                <CardContent className="pt-6">
+                  <div className="w-24 h-24 mx-auto mb-4 overflow-hidden rounded-full">
+                    <img 
+                      src={faculty.image} 
+                      alt={faculty.name}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="font-semibold text-lg mb-1">{faculty.name}</h3>
+                  <p className="text-sm text-primary mb-2">{faculty.designation}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{faculty.qualification}</p>
+                  <p className="text-xs text-muted-foreground mb-2">{faculty.experience} Experience</p>
+                  <p className="text-xs text-muted-foreground mb-4">{faculty.specialization}</p>
+                  <div className="space-y-1">
+                    <div className="flex items-center justify-center gap-1 text-xs">
+                      <Mail className="w-3 h-3" />
+                      <span className="truncate">{faculty.email}</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-1 text-xs">
+                      <Phone className="w-3 h-3" />
+                      <span>{faculty.phone}</span>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Department Resources */}
+      <section className="py-16">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">Department Resources</h2>
+            <p className="text-xl text-muted-foreground">Download department brochures and important documents</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {departments.map((dept, index) => (
+              <Card key={index}>
+                <CardContent className="p-6 text-center">
+                  <BookOpen className="w-12 h-12 mx-auto mb-4 text-primary" />
+                  <h3 className="font-semibold mb-2">{dept.name}</h3>
+                  <p className="text-sm text-muted-foreground mb-4">Department Brochure</p>
+                  <Button className="w-full" size="sm">
+                    <Download className="w-4 h-4 mr-2" />
+                    Download Brochure
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
           </div>
         </div>
       </section>

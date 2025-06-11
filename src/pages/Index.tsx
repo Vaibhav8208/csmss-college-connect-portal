@@ -89,11 +89,11 @@ const Index = () => {
                   {slide.subtitle}
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                  <Button size="lg" className="bg-primary hover:bg-primary/90">
-                    Explore Courses
+                  <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                    <Link to="/academics">Explore Courses</Link>
                   </Button>
-                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black">
-                    Apply Now
+                  <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-black" asChild>
+                    <Link to="/admission">Apply Now</Link>
                   </Button>
                 </div>
               </div>
@@ -151,8 +151,10 @@ const Index = () => {
                   <CardTitle className="text-lg">{news.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="w-full">
-                    Read More <ArrowRight className="w-4 h-4 ml-2" />
+                  <Button variant="outline" className="w-full" asChild>
+                    <Link to="/notices">
+                      Read More <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
                   </Button>
                 </CardContent>
               </Card>
@@ -181,6 +183,9 @@ const Index = () => {
                 <Award className="w-12 h-12 mx-auto mb-4 text-primary" />
                 <h3 className="text-xl font-semibold mb-2">Quality Education</h3>
                 <p className="text-muted-foreground">Experienced faculty and modern teaching methods ensure the best learning experience.</p>
+                <Button variant="outline" className="mt-4" asChild>
+                  <Link to="/about">Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
             
@@ -189,6 +194,9 @@ const Index = () => {
                 <Users className="w-12 h-12 mx-auto mb-4 text-primary" />
                 <h3 className="text-xl font-semibold mb-2">Expert Faculty</h3>
                 <p className="text-muted-foreground">Learn from industry experts and experienced professors.</p>
+                <Button variant="outline" className="mt-4" asChild>
+                  <Link to="/departments">Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
             
@@ -197,6 +205,9 @@ const Index = () => {
                 <BookOpen className="w-12 h-12 mx-auto mb-4 text-primary" />
                 <h3 className="text-xl font-semibold mb-2">Modern Curriculum</h3>
                 <p className="text-muted-foreground">Updated curriculum aligned with industry requirements and global standards.</p>
+                <Button variant="outline" className="mt-4" asChild>
+                  <Link to="/academics">Learn More</Link>
+                </Button>
               </CardContent>
             </Card>
           </div>
@@ -216,7 +227,7 @@ const Index = () => {
               <CardContent className="pt-6">
                 <Phone className="w-8 h-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Phone</h3>
-                <p className="text-muted-foreground">+91-XX-XXXX-XXXX</p>
+                <p className="text-muted-foreground">+91-240-2334455</p>
               </CardContent>
             </Card>
             
@@ -232,7 +243,7 @@ const Index = () => {
               <CardContent className="pt-6">
                 <MapPin className="w-8 h-8 mx-auto mb-4 text-primary" />
                 <h3 className="font-semibold mb-2">Address</h3>
-                <p className="text-muted-foreground">CSMSS Campus, Education City</p>
+                <p className="text-muted-foreground">CSMSS Campus, Aurangabad</p>
               </CardContent>
             </Card>
           </div>
@@ -272,7 +283,7 @@ const Index = () => {
               <h4 className="font-semibold mb-4">Connect</h4>
               <p className="text-sm opacity-90 mb-2">Follow us on social media for latest updates</p>
               <div className="text-sm">
-                <p>Phone: +91-XX-XXXX-XXXX</p>
+                <p>Phone: +91-240-2334455</p>
                 <p>Email: info@csmsscollege.edu.in</p>
               </div>
             </div>
