@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, BookOpen, Award, Bell, ArrowRight, Phone, Mail, MapPin, Star, Sparkles, Zap } from 'lucide-react';
+import { Calendar, Users, BookOpen, Award, Bell, ArrowRight, Phone, Mail, MapPin, Star, Sparkles, Zap, Target, Lightbulb, Trophy, Rocket } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -59,30 +59,50 @@ const Index = () => {
     {
       icon: BookOpen,
       title: "Academic Programs",
-      description: "Discover our comprehensive range of engineering courses",
+      description: "Discover our comprehensive range of engineering courses designed for future innovators",
       link: "/academics",
-      color: "blue"
+      color: "blue",
+      features: ["Industry-Aligned Curriculum", "Expert Faculty", "Modern Labs"]
     },
     {
       icon: Users,
       title: "Faculty Excellence",
-      description: "Meet our experienced and dedicated faculty members",
+      description: "Meet our experienced and dedicated faculty members with cutting-edge expertise",
       link: "/departments",
-      color: "indigo"
+      color: "indigo",
+      features: ["PhD Qualified", "Industry Experience", "Research Oriented"]
     },
     {
       icon: Calendar,
       title: "Campus Events",
-      description: "Stay updated with exciting campus activities",
+      description: "Stay updated with exciting campus activities, workshops, and cultural programs",
       link: "/events",
-      color: "purple"
+      color: "purple",
+      features: ["Tech Festivals", "Cultural Events", "Workshops"]
     },
     {
       icon: Award,
       title: "Achievements",
-      description: "Explore our accomplishments and success stories",
+      description: "Explore our accomplishments, awards, and success stories from students and faculty",
       link: "/gallery",
-      color: "blue"
+      color: "blue",
+      features: ["Student Success", "Faculty Awards", "College Recognition"]
+    },
+    {
+      icon: Target,
+      title: "Placement Cell",
+      description: "100% placement assistance with top companies visiting our campus regularly",
+      link: "/academics",
+      color: "green",
+      features: ["Top Companies", "High Package", "Career Guidance"]
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation Hub",
+      description: "State-of-the-art research facilities and innovation centers for breakthrough projects",
+      link: "/departments",
+      color: "orange",
+      features: ["Research Labs", "Innovation Projects", "Startup Incubation"]
     }
   ];
 
@@ -110,20 +130,20 @@ const Index = () => {
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             />
-            <div className="absolute inset-0 bg-blue-600/60" />
+            <div className="absolute inset-0 bg-blue-600/70" />
             <div className="relative z-10 flex items-center justify-center h-full text-white text-center">
               <div className="max-w-5xl px-4">
                 <div className="animate-fade-in-up">
-                  <h1 className="text-5xl md:text-7xl font-bold mb-6 text-blue-gradient">
+                  <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white animate-shimmer">
                     {slide.title}
                   </h1>
                   <p className="text-xl md:text-3xl mb-10 text-blue-100 leading-relaxed animate-slide-in-left">
                     {slide.subtitle}
                   </p>
                   <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-right">
-                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 hover-lift animate-pulse-blue" asChild>
+                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 hover-lift animate-pulse-glow" asChild>
                       <Link to="/academics">
-                        <Sparkles className="w-5 h-5 mr-2" />
+                        <Sparkles className="w-5 h-5 mr-2 animate-rotate-slow" />
                         Explore Courses
                       </Link>
                     </Button>
@@ -155,11 +175,11 @@ const Index = () => {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-20 bg-blue-gradient">
+      <section className="py-20 bg-blue-600">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 stagger-animation">
             {quickStats.map((stat, index) => (
-              <div key={index} className="text-center group hover-lift animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <div key={index} className="text-center group hover-lift animate-scale-in" style={{ '--animation-order': index } as React.CSSProperties}>
                 <div className="bg-white/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 animate-bounce-subtle">
                   <stat.icon className="w-10 h-10 text-white" />
                 </div>
@@ -171,24 +191,37 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Explore More Section */}
-      <section className="py-20 bg-blue-gradient-soft">
+      {/* Enhanced Explore More Section */}
+      <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Explore More</h2>
-            <p className="text-xl text-blue-700 max-w-2xl mx-auto">Discover all aspects of CSMSS College and find your path to success</p>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-800">Explore More</h2>
+            <p className="text-xl text-blue-700 max-w-3xl mx-auto">Discover all aspects of CSMSS College and find your path to success with our comprehensive programs and facilities</p>
           </div>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 stagger-animation">
             {exploreSections.map((section, index) => (
-              <Card key={index} className={`interactive-card bg-white border-0 shadow-lg hover-glow animate-slide-in-left`} style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={index} className="interactive-card bg-white border-0 shadow-lg hover-glow animate-slide-in-left group" style={{ '--animation-order': index } as React.CSSProperties}>
                 <CardContent className="p-8 text-center">
-                  <div className={`p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float`} style={{ animationDelay: `${index * 0.5}s` }}>
-                    <section.icon className="w-12 h-12 text-blue-600" />
+                  <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 group-hover:bg-blue-200 transition-all duration-300 animate-float" style={{ animationDelay: `${index * 0.5}s` }}>
+                    <section.icon className="w-12 h-12 text-blue-600 group-hover:scale-110 transition-transform duration-300" />
                   </div>
-                  <h3 className="text-xl font-bold mb-4 text-gray-800">{section.title}</h3>
+                  <h3 className="text-xl font-bold mb-4 text-gray-800 group-hover:text-blue-800 transition-colors">{section.title}</h3>
                   <p className="text-gray-600 mb-6 leading-relaxed">{section.description}</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                  
+                  {/* Enhanced features list */}
+                  <div className="mb-6">
+                    <ul className="space-y-2">
+                      {section.features.map((feature, featureIndex) => (
+                        <li key={featureIndex} className="flex items-center justify-center text-sm text-blue-700">
+                          <Star className="w-4 h-4 mr-2 text-blue-500" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white transform transition-all duration-300 hover:scale-105" asChild>
                     <Link to={section.link}>
                       Explore <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -197,6 +230,28 @@ const Index = () => {
               </Card>
             ))}
           </div>
+          
+          {/* Call to Action */}
+          <div className="text-center mt-16 animate-fade-in-up">
+            <div className="bg-white rounded-2xl p-8 shadow-xl border border-blue-100 max-w-4xl mx-auto">
+              <h3 className="text-3xl font-bold mb-4 text-blue-800">Ready to Start Your Journey?</h3>
+              <p className="text-lg text-blue-700 mb-8">Join thousands of successful students who have built their careers with us</p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 hover-lift" asChild>
+                  <Link to="/admission">
+                    <Rocket className="w-5 h-5 mr-2" />
+                    Apply for Admission
+                  </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-8 py-4 hover-lift" asChild>
+                  <Link to="/contact">
+                    <Phone className="w-5 h-5 mr-2" />
+                    Get in Touch
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -204,13 +259,13 @@ const Index = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Latest News & Updates</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-800">Latest News & Updates</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Stay updated with the latest happenings at CSMSS College</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          <div className="grid md:grid-cols-3 gap-8 mb-12 stagger-animation">
             {latestNews.map((news, index) => (
-              <Card key={news.id} className="hover-lift border-0 shadow-lg bg-white animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+              <Card key={news.id} className="hover-lift border-0 shadow-lg bg-white animate-scale-in group" style={{ '--animation-order': index } as React.CSSProperties}>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-3">
                     <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
@@ -222,10 +277,10 @@ const Index = () => {
                     </span>
                     <span className="text-sm text-gray-500 bg-gray-100 px-3 py-1 rounded-full">{news.date}</span>
                   </div>
-                  <CardTitle className="text-lg text-gray-800 leading-relaxed">{news.title}</CardTitle>
+                  <CardTitle className="text-lg text-gray-800 leading-relaxed group-hover:text-blue-800 transition-colors">{news.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="w-full border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
+                  <Button variant="outline" className="w-full border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow transform transition-all duration-300 hover:scale-105" asChild>
                     <Link to="/notices">
                       Read More <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -244,20 +299,20 @@ const Index = () => {
       </section>
 
       {/* Why Choose CSMSS */}
-      <section className="py-20 bg-blue-gradient-soft">
+      <section className="py-20 bg-blue-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Why Choose CSMSS College?</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-800">Why Choose CSMSS College?</h2>
             <p className="text-xl text-blue-700 max-w-2xl mx-auto">Excellence in every aspect of education</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-10">
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-left">
+          <div className="grid md:grid-cols-3 gap-10 stagger-animation">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-left group" style={{ '--animation-order': 0 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle">
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle group-hover:bg-blue-200 transition-all duration-300">
                   <Award className="w-12 h-12 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">Quality Education</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-800 transition-colors">Quality Education</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Experienced faculty and modern teaching methods ensure the best learning experience.</p>
                 <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/about">Learn More</Link>
@@ -265,12 +320,12 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-scale-in">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-scale-in group" style={{ '--animation-order': 1 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float">
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float group-hover:bg-blue-200 transition-all duration-300">
                   <Users className="w-12 h-12 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">Expert Faculty</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-800 transition-colors">Expert Faculty</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Learn from industry experts and experienced professors with cutting-edge knowledge.</p>
                 <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/departments">Learn More</Link>
@@ -278,12 +333,12 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-right">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-right group" style={{ '--animation-order': 2 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-pulse-blue">
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-pulse-glow group-hover:bg-blue-200 transition-all duration-300">
                   <BookOpen className="w-12 h-12 text-blue-600" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4 text-gray-800">Modern Curriculum</h3>
+                <h3 className="text-2xl font-bold mb-4 text-gray-800 group-hover:text-blue-800 transition-colors">Modern Curriculum</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Updated curriculum aligned with industry requirements and global standards.</p>
                 <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/academics">Learn More</Link>
@@ -298,14 +353,14 @@ const Index = () => {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16 animate-fade-in-up">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Get in Touch</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-800">Get in Touch</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">We're here to help you with your educational journey</p>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-left">
+          <div className="grid md:grid-cols-3 gap-8 stagger-animation">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-left group" style={{ '--animation-order': 0 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-orange-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle">
+                <div className="p-4 bg-orange-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle group-hover:bg-orange-200 transition-all duration-300">
                   <Phone className="w-8 h-8 text-orange-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Phone</h3>
@@ -313,9 +368,9 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-scale-in">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-scale-in group" style={{ '--animation-order': 1 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float">
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float group-hover:bg-blue-200 transition-all duration-300">
                   <Mail className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Email</h3>
@@ -323,9 +378,9 @@ const Index = () => {
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-right">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-right group" style={{ '--animation-order': 2 } as React.CSSProperties}>
               <CardContent className="pt-8">
-                <div className="p-4 bg-green-100 rounded-full w-fit mx-auto mb-6 animate-pulse-blue">
+                <div className="p-4 bg-green-100 rounded-full w-fit mx-auto mb-6 animate-pulse-glow group-hover:bg-green-200 transition-all duration-300">
                   <MapPin className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Address</h3>
@@ -337,11 +392,11 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-blue-gradient text-white py-16">
+      <footer className="bg-blue-800 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-8 animate-fade-in-up">
             <div>
-              <h3 className="text-2xl font-bold mb-4 animate-pulse-blue">CSMSS College</h3>
+              <h3 className="text-2xl font-bold mb-4 animate-pulse-glow">CSMSS College</h3>
               <p className="text-sm opacity-90 leading-relaxed">Excellence in education since 1975. Shaping futures, building careers.</p>
             </div>
             
