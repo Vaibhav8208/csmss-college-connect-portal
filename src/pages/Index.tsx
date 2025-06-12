@@ -1,7 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Calendar, Users, BookOpen, Award, Bell, ArrowRight, Phone, Mail, MapPin } from 'lucide-react';
+import { Calendar, Users, BookOpen, Award, Bell, ArrowRight, Phone, Mail, MapPin, Star, Sparkles, Zap } from 'lucide-react';
 import Navigation from '../components/Navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -55,6 +55,37 @@ const Index = () => {
     { icon: Calendar, label: "Years", count: "49+" }
   ];
 
+  const exploreSections = [
+    {
+      icon: BookOpen,
+      title: "Academic Programs",
+      description: "Discover our comprehensive range of engineering courses",
+      link: "/academics",
+      color: "blue"
+    },
+    {
+      icon: Users,
+      title: "Faculty Excellence",
+      description: "Meet our experienced and dedicated faculty members",
+      link: "/departments",
+      color: "indigo"
+    },
+    {
+      icon: Calendar,
+      title: "Campus Events",
+      description: "Stay updated with exciting campus activities",
+      link: "/events",
+      color: "purple"
+    },
+    {
+      icon: Award,
+      title: "Achievements",
+      description: "Explore our accomplishments and success stories",
+      link: "/gallery",
+      color: "blue"
+    }
+  ];
+
   useEffect(() => {
     const timer = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
@@ -63,38 +94,46 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-background">
       <Navigation />
       
       {/* Hero Section */}
-      <section className="relative h-[80vh] overflow-hidden">
+      <section className="relative h-[85vh] overflow-hidden">
         {heroSlides.map((slide, index) => (
           <div
             key={index}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            className={`absolute inset-0 transition-all duration-1000 ${
+              index === currentSlide ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
             }`}
           >
             <div
               className="absolute inset-0 bg-cover bg-center"
               style={{ backgroundImage: `url(${slide.image})` }}
             />
-            <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/60" />
+            <div className="absolute inset-0 bg-blue-600/60" />
             <div className="relative z-10 flex items-center justify-center h-full text-white text-center">
               <div className="max-w-5xl px-4">
-                <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-fade-in bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
-                  {slide.title}
-                </h1>
-                <p className="text-xl md:text-3xl mb-10 animate-fade-in text-gray-100 leading-relaxed">
-                  {slide.subtitle}
-                </p>
-                <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                  <Button size="lg" className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold text-lg px-8 py-4" asChild>
-                    <Link to="/academics">Explore Courses</Link>
-                  </Button>
-                  <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-black font-bold text-lg px-8 py-4" asChild>
-                    <Link to="/admission">Apply Now</Link>
-                  </Button>
+                <div className="animate-fade-in-up">
+                  <h1 className="text-5xl md:text-7xl font-bold mb-6 text-blue-gradient">
+                    {slide.title}
+                  </h1>
+                  <p className="text-xl md:text-3xl mb-10 text-blue-100 leading-relaxed animate-slide-in-left">
+                    {slide.subtitle}
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-6 justify-center animate-slide-in-right">
+                    <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg px-8 py-4 hover-lift animate-pulse-blue" asChild>
+                      <Link to="/academics">
+                        <Sparkles className="w-5 h-5 mr-2" />
+                        Explore Courses
+                      </Link>
+                    </Button>
+                    <Button size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 font-bold text-lg px-8 py-4 hover-lift" asChild>
+                      <Link to="/admission">
+                        <Zap className="w-5 h-5 mr-2" />
+                        Apply Now
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -106,7 +145,7 @@ const Index = () => {
           {heroSlides.map((_, index) => (
             <button
               key={index}
-              className={`w-4 h-4 rounded-full transition-all duration-300 ${
+              className={`w-4 h-4 rounded-full transition-all duration-300 hover-glow ${
                 index === currentSlide ? 'bg-white scale-125' : 'bg-white/50'
               }`}
               onClick={() => setCurrentSlide(index)}
@@ -116,17 +155,46 @@ const Index = () => {
       </section>
 
       {/* Quick Stats */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-purple-600 to-teal-600 text-white">
+      <section className="py-20 bg-blue-gradient">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {quickStats.map((stat, index) => (
-              <div key={index} className="text-center group hover:scale-110 transition-transform duration-300">
-                <div className="bg-white/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center group-hover:bg-white/30 transition-colors duration-300">
-                  <stat.icon className="w-10 h-10" />
+              <div key={index} className="text-center group hover-lift animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                <div className="bg-white/20 rounded-full p-4 w-20 h-20 mx-auto mb-4 flex items-center justify-center group-hover:bg-white/30 transition-all duration-300 animate-bounce-subtle">
+                  <stat.icon className="w-10 h-10 text-white" />
                 </div>
-                <div className="text-4xl font-bold mb-2">{stat.count}</div>
-                <div className="text-xl">{stat.label}</div>
+                <div className="text-4xl font-bold mb-2 text-white">{stat.count}</div>
+                <div className="text-xl text-blue-100">{stat.label}</div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Explore More Section */}
+      <section className="py-20 bg-blue-gradient-soft">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Explore More</h2>
+            <p className="text-xl text-blue-700 max-w-2xl mx-auto">Discover all aspects of CSMSS College and find your path to success</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {exploreSections.map((section, index) => (
+              <Card key={index} className={`interactive-card bg-white border-0 shadow-lg hover-glow animate-slide-in-left`} style={{ animationDelay: `${index * 0.1}s` }}>
+                <CardContent className="p-8 text-center">
+                  <div className={`p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float`} style={{ animationDelay: `${index * 0.5}s` }}>
+                    <section.icon className="w-12 h-12 text-blue-600" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-4 text-gray-800">{section.title}</h3>
+                  <p className="text-gray-600 mb-6 leading-relaxed">{section.description}</p>
+                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
+                    <Link to={section.link}>
+                      Explore <ArrowRight className="w-4 h-4 ml-2" />
+                    </Link>
+                  </Button>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
@@ -135,20 +203,20 @@ const Index = () => {
       {/* Latest News & Updates */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">Latest News & Updates</h2>
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Latest News & Updates</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">Stay updated with the latest happenings at CSMSS College</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {latestNews.map((news) => (
-              <Card key={news.id} className="hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-gradient-to-br from-white to-blue-50">
+            {latestNews.map((news, index) => (
+              <Card key={news.id} className="hover-lift border-0 shadow-lg bg-white animate-scale-in" style={{ animationDelay: `${index * 0.1}s` }}>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-3">
                     <span className={`px-4 py-2 rounded-full text-sm font-semibold ${
-                      news.type === 'Admission' ? 'bg-gradient-to-r from-green-100 to-green-200 text-green-800' :
-                      news.type === 'Event' ? 'bg-gradient-to-r from-blue-100 to-blue-200 text-blue-800' :
-                      'bg-gradient-to-r from-purple-100 to-purple-200 text-purple-800'
+                      news.type === 'Admission' ? 'bg-green-100 text-green-800' :
+                      news.type === 'Event' ? 'bg-blue-100 text-blue-800' :
+                      'bg-purple-100 text-purple-800'
                     }`}>
                       {news.type}
                     </span>
@@ -157,7 +225,7 @@ const Index = () => {
                   <CardTitle className="text-lg text-gray-800 leading-relaxed">{news.title}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <Button variant="outline" className="w-full border-2 border-blue-200 hover:bg-blue-50 font-semibold" asChild>
+                  <Button variant="outline" className="w-full border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                     <Link to="/notices">
                       Read More <ArrowRight className="w-4 h-4 ml-2" />
                     </Link>
@@ -167,8 +235,8 @@ const Index = () => {
             ))}
           </div>
           
-          <div className="text-center">
-            <Button asChild className="bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold px-8 py-3">
+          <div className="text-center animate-fade-in-up">
+            <Button asChild className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-8 py-3 hover-lift">
               <Link to="/notices">View All Notices</Link>
             </Button>
           </div>
@@ -176,48 +244,48 @@ const Index = () => {
       </section>
 
       {/* Why Choose CSMSS */}
-      <section className="py-20 bg-gradient-to-r from-gray-50 to-blue-50">
+      <section className="py-20 bg-blue-gradient-soft">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">Why Choose CSMSS College?</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">Excellence in every aspect of education</p>
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Why Choose CSMSS College?</h2>
+            <p className="text-xl text-blue-700 max-w-2xl mx-auto">Excellence in every aspect of education</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-10">
-            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-gradient-to-br from-white to-green-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-left">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-green-500 to-blue-500 rounded-full w-fit mx-auto mb-6">
-                  <Award className="w-12 h-12 text-white" />
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle">
+                  <Award className="w-12 h-12 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-gray-800">Quality Education</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Experienced faculty and modern teaching methods ensure the best learning experience.</p>
-                <Button variant="outline" className="border-2 border-green-200 hover:bg-green-50 font-semibold" asChild>
+                <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/about">Learn More</Link>
                 </Button>
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-gradient-to-br from-white to-purple-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-scale-in">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full w-fit mx-auto mb-6">
-                  <Users className="w-12 h-12 text-white" />
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float">
+                  <Users className="w-12 h-12 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-gray-800">Expert Faculty</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Learn from industry experts and experienced professors with cutting-edge knowledge.</p>
-                <Button variant="outline" className="border-2 border-purple-200 hover:bg-purple-50 font-semibold" asChild>
+                <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/departments">Learn More</Link>
                 </Button>
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-0 shadow-lg bg-gradient-to-br from-white to-blue-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white animate-slide-in-right">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full w-fit mx-auto mb-6">
-                  <BookOpen className="w-12 h-12 text-white" />
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-pulse-blue">
+                  <BookOpen className="w-12 h-12 text-blue-600" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-gray-800">Modern Curriculum</h3>
                 <p className="text-gray-600 mb-6 leading-relaxed">Updated curriculum aligned with industry requirements and global standards.</p>
-                <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold" asChild>
+                <Button variant="outline" className="border-2 border-blue-200 hover:bg-blue-50 font-semibold hover-glow" asChild>
                   <Link to="/academics">Learn More</Link>
                 </Button>
               </CardContent>
@@ -229,36 +297,36 @@ const Index = () => {
       {/* Contact Section */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">Get in Touch</h2>
+          <div className="text-center mb-16 animate-fade-in-up">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-blue-gradient">Get in Touch</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto">We're here to help you with your educational journey</p>
           </div>
           
           <div className="grid md:grid-cols-3 gap-8">
-            <Card className="text-center p-8 hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-white to-orange-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-left">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-orange-500 to-red-500 rounded-full w-fit mx-auto mb-6">
-                  <Phone className="w-8 h-8 text-white" />
+                <div className="p-4 bg-orange-100 rounded-full w-fit mx-auto mb-6 animate-bounce-subtle">
+                  <Phone className="w-8 h-8 text-orange-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Phone</h3>
                 <p className="text-gray-600 text-lg">+91-240-2334455</p>
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-white to-blue-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-scale-in">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full w-fit mx-auto mb-6">
-                  <Mail className="w-8 h-8 text-white" />
+                <div className="p-4 bg-blue-100 rounded-full w-fit mx-auto mb-6 animate-float">
+                  <Mail className="w-8 h-8 text-blue-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Email</h3>
                 <p className="text-gray-600 text-lg">info@csmsscollege.edu.in</p>
               </CardContent>
             </Card>
             
-            <Card className="text-center p-8 hover:shadow-xl transition-all duration-300 border-0 shadow-lg bg-gradient-to-br from-white to-green-50">
+            <Card className="text-center p-8 hover-lift border-0 shadow-lg bg-white hover-glow animate-slide-in-right">
               <CardContent className="pt-8">
-                <div className="p-4 bg-gradient-to-r from-green-500 to-teal-500 rounded-full w-fit mx-auto mb-6">
-                  <MapPin className="w-8 h-8 text-white" />
+                <div className="p-4 bg-green-100 rounded-full w-fit mx-auto mb-6 animate-pulse-blue">
+                  <MapPin className="w-8 h-8 text-green-600" />
                 </div>
                 <h3 className="font-bold mb-3 text-gray-800 text-xl">Address</h3>
                 <p className="text-gray-600 text-lg">CSMSS Campus, Aurangabad</p>
@@ -269,11 +337,11 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gradient-to-r from-gray-800 via-blue-900 to-purple-900 text-white py-16">
+      <footer className="bg-blue-gradient text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-4 gap-8 animate-fade-in-up">
             <div>
-              <h3 className="text-2xl font-bold mb-4">CSMSS College</h3>
+              <h3 className="text-2xl font-bold mb-4 animate-pulse-blue">CSMSS College</h3>
               <p className="text-sm opacity-90 leading-relaxed">Excellence in education since 1975. Shaping futures, building careers.</p>
             </div>
             
